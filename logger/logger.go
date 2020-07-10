@@ -14,8 +14,7 @@ const (
 )
 
 var (
-	async  = false
-
+	async = false
 )
 
 func Async() {
@@ -44,6 +43,14 @@ func Info(format string, v ...interface{}) {
 
 func R(format string, v ...interface{}) {
 	logger(RedColor, "", format, v...)
+}
+
+func Y(format string, v ...interface{}) {
+	logger(YellowColor, "", format, v...)
+}
+
+func B(format string, v ...interface{}) {
+	logger(BlueColor, "", format, v...)
 }
 
 func logger(color, level, format string, v ...interface{}) {
