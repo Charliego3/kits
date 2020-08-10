@@ -3,6 +3,7 @@ package logger
 import (
 	"fmt"
 	"log"
+	"os"
 )
 
 const (
@@ -23,6 +24,12 @@ func Async() {
 
 func Panic(format string, v ...interface{}) {
 	output(Red, pl, format, v...)
+}
+
+// Fatal is equivalent to Print() followed by a call to os.Exit(1).
+func Fatal(v ...interface{}) {
+	output(Red, pl, v[0].(string), v[1:]...)
+	os.Exit(1)
 }
 
 func Error(format string, v ...interface{}) {
