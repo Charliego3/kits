@@ -69,6 +69,12 @@ func output(color, level, format string, v ...interface{}) {
 	}
 	message = color + level + message + Reset
 
+	if v != nil && len(v) > 0 {
+		if err, ok := v[0].(error); ok {
+			log.Fatal(err)
+		}
+	}
+
 	if level == pl {
 		log.Panicln(message)
 	} else {
